@@ -19,6 +19,8 @@ public class Doska {
 
     private int naRade;
 
+    private boolean naRadeVieHrat;
+
 
 
     public Doska(int pocetHracov) {
@@ -88,6 +90,14 @@ public class Doska {
             for (int y = 0; y < 3; y++){
                 hraci[i].getRuka()[y] = balikKariet.get(0);
                 balikKariet.remove(0);
+            }
+        }
+        //pozri ci hrac 0 vie zahrat
+        this.naRadeVieHrat = false;
+        for (int i = 0; i < 3; i++){
+            if(this.getHraci()[this.getNaRade()].getRuka()[i].viemZahrat(this)){
+                this.naRadeVieHrat = true;
+                break;
             }
         }
 

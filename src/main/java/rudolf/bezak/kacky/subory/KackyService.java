@@ -48,6 +48,29 @@ public class KackyService implements IKackyService {
         if (this.listKariet.size() <= id){
             throw new IllegalOperationException();
         }
+        //pozri ci vies zahrat tu kartu: ma ju na ruke, da sa zahrat
+
+        boolean vieZahratAsponJednu = false;
+        for (int i = 0; i < 3; i++) {
+            if (doska.getHraci()[doska.getNaRade()].getRuka()[i].viemZahrat(this.doska)){
+                vieZahratAsponJednu = true;
+                break;
+            }
+        }
+
+
+        boolean maKartuNaRuke = false;
+        for (int i = 0; i < 3; i++) {
+            if (doska.getHraci()[doska.getNaRade()].getRuka()[i].getId() == id){
+                maKartuNaRuke = true;
+                break;
+            }
+        }
+        if (!maKartuNaRuke){
+            throw new IllegalOperationException();
+        }
+
+
         if(!this.listKariet.get(id).isMa2Kroky()){
             if(!this.listKariet.get(id).zahrajKartu(this.doska)){
                 throw new IllegalOperationException();
@@ -71,5 +94,14 @@ public class KackyService implements IKackyService {
             naRade -= doska.getHraci().length;
         }
         doska.setNaRade(naRade);
+        //pozri ci vie zahrat
+        boolean vieZahrat = false;
+        for (int i = 0; i < 3; i++){
+            if(this.doska.getHraci()[this.doska.getNaRade()].getRuka()[i].viemZahrat(this.doska)){
+                vieZahrat = true;
+                break;
+            }
+        }
+
     }
 }

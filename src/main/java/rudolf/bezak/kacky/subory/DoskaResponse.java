@@ -12,6 +12,8 @@ public class DoskaResponse {
     private boolean[] zameriavaci;
     private int[][] ruky;
     private int naRade;
+
+    private boolean vieZahrat;
     private List<Integer> balikKariet;
     private List<Integer> balikKaciek;
 
@@ -25,6 +27,7 @@ public class DoskaResponse {
                 ruky[i][y] = doska.getHraci()[i].getRuka()[y].getId();
             }
         }
+        this.vieZahrat = doska.isNaRadeVieHrat();
         naRade = doska.getNaRade();
         balikKariet = new ArrayList<>();
         for (int i = 0; i < doska.getBalikKariet().size(); i++){

@@ -8,6 +8,15 @@ public class Zamierit extends Karta{
     private int id = 5;
     private boolean ma2Kroky = true;
 
+    public boolean viemZahrat(Doska doska){
+        for (int i = 0; i < 6; i++ ) {
+            if (!doska.getZameriavaci()[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public boolean zahrajKartu(Doska doska, int miesto){
         if (doska.getZameriavaci()[miesto]){
             return false;

@@ -8,7 +8,7 @@ public class Karta {
     private int id = 0;
     private boolean ma2Kroky = false;
 
-    public boolean viemZahrat(){
+    public boolean viemZahrat(Doska doska){
         return true;
     }
     public int getId(){
