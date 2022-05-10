@@ -1,7 +1,7 @@
-package rudolf.bezak.kacky.subory;
+package rudolf.bezak.kacky.subory.web.bodies;
 
 import lombok.Getter;
-import rudolf.bezak.kacky.subory.karty.Karta;
+import rudolf.bezak.kacky.subory.data.Doska;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,12 +1,14 @@
-package rudolf.bezak.kacky.subory;
+package rudolf.bezak.kacky.subory.web;
 
 
-import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import rudolf.bezak.kacky.subory.web.bodies.DoskaResponse;
+import rudolf.bezak.kacky.subory.web.bodies.UkazNaJazeroRequest;
 import rudolf.bezak.kacky.subory.exceptions.IllegalOperationException;
+import rudolf.bezak.kacky.subory.logic.IKackyService;
 
 @RestController
 @RequestMapping("/kacky")

@@ -1,5 +1,6 @@
-package rudolf.bezak.kacky.subory;
+package rudolf.bezak.kacky.subory.logic;
 
+import rudolf.bezak.kacky.subory.data.Doska;
 import rudolf.bezak.kacky.subory.exceptions.IllegalOperationException;
 
 public interface IKackyService {

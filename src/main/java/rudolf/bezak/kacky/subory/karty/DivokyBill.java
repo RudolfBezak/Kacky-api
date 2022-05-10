@@ -1,7 +1,7 @@
 package rudolf.bezak.kacky.subory.karty;
 
 import lombok.Getter;
-import rudolf.bezak.kacky.subory.Doska;
+import rudolf.bezak.kacky.subory.data.Doska;
 
 @Getter
 public class DivokyBill extends Karta{

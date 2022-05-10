@@ -1,9 +1,10 @@
-package rudolf.bezak.kacky.subory;
+package rudolf.bezak.kacky.subory.logic;
 
-import lombok.Getter;
 import org.springframework.stereotype.Service;
+import rudolf.bezak.kacky.subory.data.Doska;
 import rudolf.bezak.kacky.subory.exceptions.IllegalOperationException;
 import rudolf.bezak.kacky.subory.karty.*;
+import rudolf.bezak.kacky.subory.logic.IKackyService;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package rudolf.bezak.kacky.subory;
+package rudolf.bezak.kacky.subory.data;
 
 import lombok.Getter;
 import lombok.Setter;
