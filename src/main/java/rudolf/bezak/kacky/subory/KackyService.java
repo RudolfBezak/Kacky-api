@@ -21,6 +21,9 @@ public class KackyService implements IKackyService {
         this.listKariet.add(new KacaciTanec());
         this.listKariet.add(new Turbokacka());
         this.listKariet.add(new Rosambo());
+        this.listKariet.add(new Zamierit());
+        this.listKariet.add(new Vystrel());
+        this.listKariet.add(new DivokyBill());
     }
 
     @Override
@@ -50,6 +53,9 @@ public class KackyService implements IKackyService {
                 throw new IllegalOperationException();
             }
             return;
+        }
+        if (miesto > 5){
+            throw new IllegalOperationException();
         }
         if (!this.listKariet.get(id).zahrajKartu(this.doska, miesto)){
             throw new IllegalOperationException();

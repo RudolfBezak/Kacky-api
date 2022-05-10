@@ -23,8 +23,12 @@ public class Karta {
         return false;
     }
 
+    //idcka kariet
     //kacaci pochod = 1
     //kacaci tanec = 2
     //turbokacka = 3
     //rosambo = 4
+    //zamier = 5
+    //vystrel = 6
+    //divoky bill = 7
 }

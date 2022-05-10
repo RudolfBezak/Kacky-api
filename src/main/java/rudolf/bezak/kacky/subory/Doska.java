@@ -54,4 +54,21 @@ public class Doska {
 
 
     }
+
+    public boolean zastrelKacku(int miesto){
+        if (this.jazero[miesto] == 0){
+            this.zameriavaci[miesto] = false;
+            return true;
+        }
+        int posunKaciek = 5 - miesto;
+        for (int i = 0; i < posunKaciek; i++){
+            this.jazero[i + miesto] = this.jazero[i + miesto + 1];
+
+        }
+        this.jazero[5] = this.balikKaciek.get(0);
+        this.balikKaciek.remove(0);
+        this.zameriavaci[miesto] = false;
+
+        return true;
+    }
 }
