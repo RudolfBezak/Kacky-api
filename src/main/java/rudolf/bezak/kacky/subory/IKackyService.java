@@ -8,5 +8,5 @@ public interface IKackyService {
 
     Doska getDoska() throws IllegalOperationException;
 
-    void zahrajKartuById(int id) throws IllegalOperationException;
+    void zahrajKartuById(int id, int miesto) throws IllegalOperationException;
 }

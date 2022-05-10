@@ -6,6 +6,7 @@ import rudolf.bezak.kacky.subory.exceptions.IllegalOperationException;
 import rudolf.bezak.kacky.subory.karty.KacaciPochod;
 import rudolf.bezak.kacky.subory.karty.KacaciTanec;
 import rudolf.bezak.kacky.subory.karty.Karta;
+import rudolf.bezak.kacky.subory.karty.Turbokacka;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +22,7 @@ public class KackyService implements IKackyService {
         this.listKariet.add(new Karta());
         this.listKariet.add(new KacaciPochod());
         this.listKariet.add(new KacaciTanec());
+        this.listKariet.add(new Turbokacka());
     }
 
     @Override
@@ -41,10 +43,18 @@ public class KackyService implements IKackyService {
         return doska;
     }
 
-    public void zahrajKartuById(int id) throws IllegalOperationException {
+    public void zahrajKartuById(int id, int miesto) throws IllegalOperationException {
         if (this.listKariet.size() <= id){
             throw new IllegalOperationException();
         }
-        this.listKariet.get(id).zahrajKartu(this.doska);
+        if(!this.listKariet.get(id).isMa2Kroky()){
+            if(!this.listKariet.get(id).zahrajKartu(this.doska)){
+                throw new IllegalOperationException();
+            }
+            return;
+        }
+        if (!this.listKariet.get(id).zahrajKartu(this.doska, miesto)){
+            throw new IllegalOperationException();
+        }
     }
 }

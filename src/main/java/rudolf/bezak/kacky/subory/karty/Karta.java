@@ -6,6 +6,7 @@ import rudolf.bezak.kacky.subory.Doska;
 @Getter
 public class Karta {
     private int id = 0;
+    private boolean ma2Kroky = false;
 
     public boolean viemZahrat(){
         return true;
@@ -14,9 +15,15 @@ public class Karta {
         return this.id;
     }
 
-    public void zahrajKartu(Doska doska){
+    public boolean zahrajKartu(Doska doska){
+        return false;
+    }
+
+    public boolean zahrajKartu(Doska doska, int miesto){
+        return false;
     }
 
     //kacaci pochod = 1
     //kacaci tanec = 2
+    //turbokacka = 3
 }

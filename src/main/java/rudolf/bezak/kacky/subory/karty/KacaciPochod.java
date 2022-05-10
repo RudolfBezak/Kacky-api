@@ -10,7 +10,7 @@ public class KacaciPochod extends Karta{
     private int id = 1;
 
     @Override
-    public void zahrajKartu(Doska doska){
+    public boolean zahrajKartu(Doska doska){
         List<Integer> balikKaciek =  doska.getBalikKaciek();
         int[] jazero = doska.getJazero();
 
@@ -23,6 +23,7 @@ public class KacaciPochod extends Karta{
 
         balikKaciek.remove(0);
         balikKaciek.add(tmp);
+        return true;
     }
 
 }

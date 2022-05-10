@@ -19,7 +19,7 @@ public class KackyController {
     @PostMapping("/{num}")
     public ResponseEntity<DoskaResponse> vytvorDosku(@PathVariable("num") int num) throws IllegalOperationException{
         this.service.vytvorDosku(num);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        return new ResponseEntity<>(new DoskaResponse(service.getDoska()),HttpStatus.CREATED);
     }
 
     //vrati stav dosky
@@ -29,8 +29,8 @@ public class KackyController {
     }
 
     @PutMapping("/{id}")
-    public DoskaResponse zahrajkartuById(@PathVariable("id") int id) throws IllegalOperationException{
-        this.service.zahrajKartuById(id);
+    public DoskaResponse zahrajkartuById(@PathVariable("id") int id, @RequestBody UkazNaJazeroRequest miesto) throws IllegalOperationException{
+        this.service.zahrajKartuById(id, miesto.getKacka());
         return new DoskaResponse(service.getDoska());
     }
 

@@ -11,7 +11,7 @@ public class KacaciTanec extends Karta{
     private int id = 2;
 
     @Override
-    public void zahrajKartu(Doska doska){
+    public boolean zahrajKartu(Doska doska){
         //daj vsetko do decku, shuffle deck, vyloz vrchnych 6
         for (int i = 0; i < 6; i++){
             doska.getBalikKaciek().add(doska.getJazero()[i]);
@@ -21,5 +21,6 @@ public class KacaciTanec extends Karta{
             doska.getJazero()[i] = doska.getBalikKaciek().get(0);
             doska.getBalikKaciek().remove(0);
         }
+        return true;
     }
 }
