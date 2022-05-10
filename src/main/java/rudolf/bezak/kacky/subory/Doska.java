@@ -2,7 +2,7 @@ package rudolf.bezak.kacky.subory;
 
 import lombok.Getter;
 import lombok.Setter;
-import rudolf.bezak.kacky.subory.karty.Karta;
+import rudolf.bezak.kacky.subory.karty.*;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -17,10 +17,16 @@ public class Doska {
     private List<Karta> balikKariet;
     private List<Integer> balikKaciek;
 
+    private int naRade;
+
+
 
     public Doska(int pocetHracov) {
 
+        int[] poctykariet = {6,1,1,2,10,12,2};
+
         //vytvor hracov
+        this.naRade = 0;
         this.hraci = new Hrac[pocetHracov];
         for (int i = 0; i < pocetHracov; i++){
             this.hraci[i] = new Hrac(i+1);
@@ -50,6 +56,39 @@ public class Doska {
         for (int i = 0; i < 6; i++){
             jazero[i] = balikKaciek.get(0);
             balikKaciek.remove(0);
+        }
+
+        //vytvor balikkariet
+        balikKariet = new ArrayList<>();
+        for (int i = 0; i < poctykariet[0]; i++){
+            balikKariet.add(new KacaciPochod());
+        }
+        for (int i = 0; i < poctykariet[1]; i++){
+            balikKariet.add(new KacaciTanec());
+        }
+        for (int i = 0; i < poctykariet[2]; i++){
+            balikKariet.add(new Turbokacka());
+        }
+        for (int i = 0; i < poctykariet[3]; i++){
+            balikKariet.add(new Rosambo());
+        }
+        for (int i = 0; i < poctykariet[4]; i++){
+            balikKariet.add(new Zamierit());
+        }
+        for (int i = 0; i < poctykariet[5]; i++){
+            balikKariet.add(new Vystrel());
+        }
+        for (int i = 0; i < poctykariet[6]; i++){
+            balikKariet.add(new DivokyBill());
+        }
+        Collections.shuffle(balikKariet);
+
+        //potiahni karty hracom
+        for (int i = 0; i < pocetHracov; i++){
+            for (int y = 0; y < 3; y++){
+                hraci[i].getRuka()[y] = balikKariet.get(0);
+                balikKariet.remove(0);
+            }
         }
 
 

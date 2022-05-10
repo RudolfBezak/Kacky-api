@@ -1,10 +1,12 @@
 package rudolf.bezak.kacky.subory;
 
+import lombok.Getter;
 import rudolf.bezak.kacky.subory.karty.Karta;
 
+@Getter
 public class Hrac {
-    int id;
-    Karta[] ruka;
+    private int id;
+    private Karta[] ruka;
 
     public Hrac(int id) {
         this.id = id;

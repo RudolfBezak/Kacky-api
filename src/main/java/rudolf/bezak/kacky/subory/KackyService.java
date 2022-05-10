@@ -52,6 +52,7 @@ public class KackyService implements IKackyService {
             if(!this.listKariet.get(id).zahrajKartu(this.doska)){
                 throw new IllegalOperationException();
             }
+            posunHraca();
             return;
         }
         if (miesto > 5){
@@ -60,5 +61,15 @@ public class KackyService implements IKackyService {
         if (!this.listKariet.get(id).zahrajKartu(this.doska, miesto)){
             throw new IllegalOperationException();
         }
+        posunHraca();
+    }
+
+    public void posunHraca(){
+        int naRade = doska.getNaRade();
+        naRade += 1;
+        if (naRade >= doska.getHraci().length){
+            naRade -= doska.getHraci().length;
+        }
+        doska.setNaRade(naRade);
     }
 }
