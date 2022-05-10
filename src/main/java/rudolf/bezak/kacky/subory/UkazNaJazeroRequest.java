@@ -4,5 +4,5 @@ import lombok.Getter;
 
 @Getter
 public class UkazNaJazeroRequest {
-    private int kacka;
+    private Integer kacka;
 }

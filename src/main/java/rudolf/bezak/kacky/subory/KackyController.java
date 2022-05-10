@@ -30,6 +30,9 @@ public class KackyController {
 
     @PutMapping("/{id}")
     public DoskaResponse zahrajkartuById(@PathVariable("id") int id, @RequestBody UkazNaJazeroRequest miesto) throws IllegalOperationException{
+        if (miesto.getKacka() == null){
+            throw new IllegalOperationException();
+        }
         this.service.zahrajKartuById(id, miesto.getKacka());
         return new DoskaResponse(service.getDoska());
     }
