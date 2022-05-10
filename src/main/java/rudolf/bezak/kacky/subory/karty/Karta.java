@@ -26,4 +26,5 @@ public class Karta {
     //kacaci pochod = 1
     //kacaci tanec = 2
     //turbokacka = 3
+    //rosambo = 4
 }

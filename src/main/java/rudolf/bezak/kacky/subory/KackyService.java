@@ -3,10 +3,7 @@ package rudolf.bezak.kacky.subory;
 import lombok.Getter;
 import org.springframework.stereotype.Service;
 import rudolf.bezak.kacky.subory.exceptions.IllegalOperationException;
-import rudolf.bezak.kacky.subory.karty.KacaciPochod;
-import rudolf.bezak.kacky.subory.karty.KacaciTanec;
-import rudolf.bezak.kacky.subory.karty.Karta;
-import rudolf.bezak.kacky.subory.karty.Turbokacka;
+import rudolf.bezak.kacky.subory.karty.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +20,7 @@ public class KackyService implements IKackyService {
         this.listKariet.add(new KacaciPochod());
         this.listKariet.add(new KacaciTanec());
         this.listKariet.add(new Turbokacka());
+        this.listKariet.add(new Rosambo());
     }
 
     @Override
