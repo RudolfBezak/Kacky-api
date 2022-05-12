@@ -2,6 +2,7 @@ package rudolf.bezak.kacky.subory.logic;
 
 import org.springframework.stereotype.Service;
 import rudolf.bezak.kacky.subory.data.Doska;
+import rudolf.bezak.kacky.subory.data.Hrac;
 import rudolf.bezak.kacky.subory.exceptions.IllegalOperationException;
 import rudolf.bezak.kacky.subory.karty.*;
 import rudolf.bezak.kacky.subory.logic.IKackyService;
@@ -93,6 +94,9 @@ public class KackyService implements IKackyService {
     public boolean posunHraca(){
         int naRade = doska.getNaRade();
         naRade += 1;
+        if (naRade >= doska.getHraci().length){
+            naRade -= doska.getHraci().length;
+        }
 
         boolean hra1 = false;
         boolean hra2 = false;
@@ -112,6 +116,9 @@ public class KackyService implements IKackyService {
         }
 
         while (doska.getHraci()[naRade].getZivot()==0){
+            if (!doska.getHraci()[naRade].isVratilRuku()){
+                vratRuku(naRade);
+            }
             naRade++;
         }
         if (naRade >= doska.getHraci().length){
@@ -127,6 +134,13 @@ public class KackyService implements IKackyService {
             }
         }
         return true;
+
+    }
+    private void vratRuku(int hracId){
+        for (int i = 0; i < 3; i++){
+            doska.getBalikKariet().add(doska.getHraci()[hracId].getRuka()[i]);
+            doska.getHraci()[hracId].getRuka()[i] = null;
+        }
 
     }
 }

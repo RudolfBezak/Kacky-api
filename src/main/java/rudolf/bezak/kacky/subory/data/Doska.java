@@ -112,7 +112,7 @@ public class Doska {
             this.zameriavaci[miesto] = false;
             return true;
         }
-        hraci[this.jazero[miesto]].decrementZivot();
+        hraci[this.jazero[miesto]-1].decrementZivot();
         int posunKaciek = 5 - miesto;
         for (int i = 0; i < posunKaciek; i++){
             this.jazero[i + miesto] = this.jazero[i + miesto + 1];
