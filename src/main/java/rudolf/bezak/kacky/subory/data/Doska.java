@@ -21,6 +21,8 @@ public class Doska {
 
     private boolean naRadeVieHrat;
 
+    private boolean pokracujeHra;
+
 
 
     public Doska(int pocetHracov) {
@@ -100,6 +102,7 @@ public class Doska {
                 break;
             }
         }
+        this.pokracujeHra = true;
 
 
     }
@@ -109,6 +112,7 @@ public class Doska {
             this.zameriavaci[miesto] = false;
             return true;
         }
+        hraci[this.jazero[miesto]].decrementZivot();
         int posunKaciek = 5 - miesto;
         for (int i = 0; i < posunKaciek; i++){
             this.jazero[i + miesto] = this.jazero[i + miesto + 1];

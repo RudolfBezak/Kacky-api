@@ -85,12 +85,35 @@ public class KackyService implements IKackyService {
         if (!this.listKariet.get(id).zahrajKartu(this.doska, miesto)){
             throw new IllegalOperationException();
         }
-        posunHraca();
+        if (!posunHraca()){
+            this.doska.setPokracujeHra(false);
+        }
     }
 
-    public void posunHraca(){
+    public boolean posunHraca(){
         int naRade = doska.getNaRade();
         naRade += 1;
+
+        boolean hra1 = false;
+        boolean hra2 = false;
+        for (int i = 0; i < doska.getHraci().length; i++){
+            if(hra1 && doska.getHraci()[i].getZivot() > 0){
+                hra2 = true;
+                break;
+            }
+
+            if (doska.getHraci()[i].getZivot() > 0){
+                hra1 = true;
+            }
+        }
+
+        if (!hra2){
+            return false;
+        }
+
+        while (doska.getHraci()[naRade].getZivot()==0){
+            naRade++;
+        }
         if (naRade >= doska.getHraci().length){
             naRade -= doska.getHraci().length;
         }
@@ -103,6 +126,7 @@ public class KackyService implements IKackyService {
                 break;
             }
         }
+        return true;
 
     }
 }
