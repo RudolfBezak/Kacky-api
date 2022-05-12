@@ -25,6 +25,7 @@ public class Doska {
 
 
 
+
     public Doska(int pocetHracov) {
 
         int[] poctykariet = {6,1,1,2,10,12,2};
@@ -96,6 +97,7 @@ public class Doska {
         }
         //pozri ci hrac 0 vie zahrat
         this.naRadeVieHrat = false;
+        this.naRade = 0;
         for (int i = 0; i < 3; i++){
             if(this.getHraci()[this.getNaRade()].getRuka()[i].viemZahrat(this)){
                 this.naRadeVieHrat = true;
@@ -124,4 +126,5 @@ public class Doska {
 
         return true;
     }
+
 }

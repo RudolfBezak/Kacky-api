@@ -11,10 +11,10 @@ public class Zamierit extends Karta{
     public boolean viemZahrat(Doska doska){
         for (int i = 0; i < 6; i++ ) {
             if (!doska.getZameriavaci()[i]) {
-                return false;
+                return true;
             }
         }
-        return true;
+        return false;
     }
 
     public boolean zahrajKartu(Doska doska, int miesto){

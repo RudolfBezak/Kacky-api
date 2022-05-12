@@ -12,10 +12,11 @@ public class DoskaResponse {
     private boolean[] zameriavaci;
     private int[][] ruky;
 
+    private boolean vieZahrat;
+
     private List<Integer> zivoty;
     private int naRade;
 
-    private boolean vieZahrat;
     private List<Integer> balikKariet;
     private List<Integer> balikKaciek;
 

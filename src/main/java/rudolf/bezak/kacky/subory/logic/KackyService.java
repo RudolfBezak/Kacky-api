@@ -52,25 +52,28 @@ public class KackyService implements IKackyService {
         }
         //pozri ci vies zahrat tu kartu: ma ju na ruke, da sa zahrat
 
-        boolean vieZahratAsponJednu = false;
-        for (int i = 0; i < 3; i++) {
-            if (doska.getHraci()[doska.getNaRade()].getRuka()[i].viemZahrat(this.doska)){
-                vieZahratAsponJednu = true;
-                break;
+
+        if (doska.isNaRadeVieHrat()){
+            boolean maKartuNaRuke = false;
+            for (int i = 0; i < 3; i++) {
+                if (doska.getHraci()[doska.getNaRade()].getRuka()[i].getId() == id){
+                    maKartuNaRuke  = true;
+                    //vymen ju s kopou
+                    doska.getBalikKariet().add(doska.getHraci()[doska.getNaRade()].getRuka()[i]);
+                    doska.getHraci()[doska.getNaRade()].getRuka()[i] = doska.getBalikKariet().get(0);
+                    doska.getBalikKariet().remove(0);
+                    break;
+                }
+            }
+            if (!maKartuNaRuke){
+                throw new IllegalOperationException();
             }
         }
 
+        if (!doska.isNaRadeVieHrat()){
+            return;
+        }
 
-        boolean maKartuNaRuke = false;
-        for (int i = 0; i < 3; i++) {
-            if (doska.getHraci()[doska.getNaRade()].getRuka()[i].getId() == id){
-                maKartuNaRuke = true;
-                break;
-            }
-        }
-        if (!maKartuNaRuke){
-            throw new IllegalOperationException();
-        }
 
 
         if(!this.listKariet.get(id).isMa2Kroky()){
@@ -92,12 +95,14 @@ public class KackyService implements IKackyService {
     }
 
     public boolean posunHraca(){
+        //zisti kto je na rade
         int naRade = doska.getNaRade();
         naRade += 1;
         if (naRade >= doska.getHraci().length){
             naRade -= doska.getHraci().length;
         }
 
+        //zisti ci neskoncila hra
         boolean hra1 = false;
         boolean hra2 = false;
         for (int i = 0; i < doska.getHraci().length; i++){
@@ -115,6 +120,7 @@ public class KackyService implements IKackyService {
             return false;
         }
 
+        //ak hrac ume vrati ruku
         while (doska.getHraci()[naRade].getZivot()==0){
             if (!doska.getHraci()[naRade].isVratilRuku()){
                 vratRuku(naRade);
@@ -126,10 +132,10 @@ public class KackyService implements IKackyService {
         }
         doska.setNaRade(naRade);
         //pozri ci vie zahrat
-        boolean vieZahrat = false;
+        this.doska.setNaRadeVieHrat(false);
         for (int i = 0; i < 3; i++){
             if(this.doska.getHraci()[this.doska.getNaRade()].getRuka()[i].viemZahrat(this.doska)){
-                vieZahrat = true;
+                this.doska.setNaRadeVieHrat(true);
                 break;
             }
         }
